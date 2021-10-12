@@ -2,10 +2,10 @@ import csv
 import json
 
 
-csvfile = open('co2_simple.csv', 'r')
-jsonfile = open('co2.json', 'w')
+csvfile = open('temperature.csv', 'r')
+jsonfile = open('temperature.json', 'w')
 
-fieldnames = ("Decimal Date", "Monthly Average")
+fieldnames = ("Year", "Annual Anomaly", "Annual Unc.", "Five-year Anomaly", "Five-year Unc.")
 reader = csv.DictReader( csvfile, fieldnames)
 for row in reader:
     json.dump(row, jsonfile)

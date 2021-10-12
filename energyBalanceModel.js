@@ -3,7 +3,7 @@
 // a simple climate model
 
 
-class EBM {
+export class EBM {
 
     constructor() {
 
@@ -29,10 +29,13 @@ class EBM {
 
         this.a = 315; // Wm^-2
         this.b = 4.6; //Wm^-2K^-1
+
+        
+
     }
 
     blackBodyRadiation() {
-        let answer = this.epsilon * this.sigma * this.T();
+        let answer = this.epsilon * this.sigma * Math.pow(this.T(), 4);
         if (isNaN(answer)){
             console.error("error: NaN");
         }
@@ -51,7 +54,7 @@ class EBM {
         }
     }
 
-    T() {
+    temperature() {
         let answer = Math.pow(this.incomingRadiation() / (this.epsilon * this.sigma), 1/4) ;
         if (isNaN(answer)){
             console.error("error: NaN");
@@ -60,10 +63,6 @@ class EBM {
             return answer;
         }
     }
-    
+
 
 }
-
-let ebm = new EBM();
-
-console.log(ebm.T());
